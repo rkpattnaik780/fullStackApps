@@ -1,0 +1,32 @@
+body{padding-top : 50px ;}
+
+#webname{
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size : 35px ;
+    font-weight: 120% ;
+}
+
+#bio{
+   margin : auto ;
+}
+.biotable{
+    max-width : 400px;
+    margin : auto ;
+}
+#poll-list{
+    font-family: 'PT Sans Caption', sans-serif;
+}
+#poll-list h1 { font-size: 50px ;}
+
+.diffpolls{
+    list-style-type: none ;
+    width : 500px ;
+    border: 0px solid black ;
+    border-radius: 4px ;
+    margin : auto ;
+    padding : 10px ;
+}
+
+.diffpolls h1 { font-size : 25px !important ;}
+.diffpolls ul {list-style-type: none ;}
+.diffpolls p { text-align: right ;}

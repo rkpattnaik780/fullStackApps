@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html ng-app="myApp" ng-controller="myCtrl">
+
+<head>
+    <title>Active Polls</title>
+    <style>
+        #nvbar {
+            background-color: #00cc00;
+        }
+
+        #nvbar a {
+            color: white;
+        }
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Caption" rel="stylesheet">
+    <link href="../stylesheets/polls.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <section class="container">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid" id="nvbar">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#" id="webname">Voix</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href = "dashboard.html">Home</a></li>
+                    <li class="active"><a href="polls.html">Polls</a></li>
+                    <li><a href = "mypolls.html">My polls</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a>Hello {{userinfo.fname}} {{userinfo.lname}}</a></li>
+                    <li><a href = "#" ng-click="logoff()">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class = "row">
+        <div class="col-sm-8" id = "poll-list">
+             <h1>Polls active now</h1>
+             <div class = "displaypolls">
+                 <div class = "diffpolls" ng-repeat="item in plist">
+                     <h1>{{item.question}}</h1>
+                     <p> - &nbsp;&nbsp;&nbsp;&nbsp;<i>{{item.creator}}</i></p>
+                     <table class="table">
+                         <tr><th>{{item.op1}}</th><td>{{item.c1}}</td><td><button type="button" class = "btn btn-info" ng-click = "add1(item)" style="display : {{display}}">Upvote</button></td></tr>
+                         <tr><th>{{item.op2}}</th><td>{{item.c2}}</td><td><button type="button" class = "btn btn-info" ng-click = "add2(item)" style="display : {{display}}">Upvote</button></td></tr>
+                         <tr><th>{{item.op3}}</th><td>{{item.c3}}</td><td><button type="button" class = "btn btn-info" ng-click = "add3(item)" style="display : {{display}}">Upvote</button></td></tr>
+                         <tr><th>{{item.op4}}</th><td>{{item.c4}}</td><td><button type="button" class = "btn btn-info" ng-click = "add4(item)" style="display : {{display}}">Upvote</button></td></tr>
+                     </table>
+                     </div>
+             </div>
+        </div>
+        <div class = "col-sm-4">
+            
+        </div>
+        </div>
+    </section>
+    <script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../javascript/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="../javascript/angular.min.js" type="text/javascript"></script>
+    <script src="../javascript/pollcontroller.js" type="text/javascript"></script>
+</body>
+
+</html>

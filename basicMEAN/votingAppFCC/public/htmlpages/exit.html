@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Logged Off</title>
+    <style>
+        #nvbar {
+            background-color: #00cc00;
+        }
+
+        #nvbar a {
+            color: white;
+        }
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Caption" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../stylesheets/exit.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <section ng-app="myApp" ng-controller="myCtrl">
+        <div class="row">
+            <div class="col-sm-6" id="exitinfo">
+             <h1 class = "head1">Au Revoir !</h1> 
+             <div class = "logbar">
+                 <p>Thank you for visiting <span class = "orglyn">Voix</span> .Please visit us again.</p>
+             </div> 
+             <div class = "logbar">
+                 <p>Click here to <a href = "../index.html">login</a> again . Please visit us again.</p>
+             </div> 
+            </div>
+            <div class="col-sm-6" id="info">
+                <div id="ignis">
+                    Create a new account ? &nbsp;&nbsp;&nbsp;<a href="htmlpages/register.html"><button type="button" class = "btn" id = "sgup"> Sign Up</button></a>
+                </div>
+                <div id = "orgname">
+                    <h1> Voix </h1>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Cause your opinion matters</p>
+                </div>
+                <img src="../images/crowd.jpg" alt="a peaceful demonstration" class="img-thumbnail">
+                <br><br>
+                <p> Get registered now , create polls and cast your votes.</p>
+            </div>
+        </div>
+    </section>
+    <script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../javascript/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="../javascript/angular.min.js" type="text/javascript"></script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html5>
+<html>
+
+<head>
+    <style>
+        #nvbar {
+            background-color: #00cc00;
+        }
+
+        #nvbar a {
+            color: white;
+        }
+    </style>
+    <title>Dashboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../stylesheets/dashboard.css" rel="stylesheet" type="text/css">
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+    <section class="container" style="visibility : {{display}}">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid" id="nvbar">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#" id="webname">Voix</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href = "dashboard.html">Home</a></li>
+                    <li><a href = "polls.html">Polls</a></li>
+                    <li><a href = "mypolls.html">My polls</a></li>
+                    <li><a href = "profile.html">Profile</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a>Hello {{userdetails.fname}} {{userdetails.lname}}</a></li>
+                    <li><a href="#" ng-click = "logoff()">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+        <h1> Hello {{userdetails.fname}} {{userdetails.lname}}</h1>
+        <div class="imgtxt">
+            <img src= "../images/crowd.jpg" alt="Norway" width="1000" height="300">
+            <div class="topleft">Voix</div>
+        </div>
+    </section>
+    <script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../javascript/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="../javascript/angular.min.js" type="text/javascript"></script>
+    <script src="../javascript/boardcontroller.js" type="text/javascript"></script>
+</body>
+
+</html>

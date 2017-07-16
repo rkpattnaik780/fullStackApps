@@ -1,0 +1,28 @@
+*{ padding : 0px ;
+   margin: 0px ;}
+body { overflow: hidden ;}
+#info{
+    background-color: #99ff99 ;
+    height : 100vh;
+    padding : 20px ;
+    color : white ;
+    font-family: 'Roboto', sans-serif;
+}
+#signupbar{ height : 100vh ;
+            font-family: 'Oxygen', sans-serif; 
+            padding : 10px;} 
+#regform{
+    padding : 20px
+}
+#ignis{ text-align: right ;
+        padding-right : 10px ;}
+#sgup{ border : 1px solid white ;
+       background-color: #99ff99 ;}
+#info a { color : white ;}
+#orgname h1 { font-family: 'Gloria Hallelujah', cursive;
+              font-size: 100px ;
+              text-align: center ;
+              font-weight: 100% }
+#orgname p { text-align: center ;
+             padding-left: 140px ;
+             font-size : 18px ;}

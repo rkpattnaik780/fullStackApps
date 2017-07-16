@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html ng-app="myApp" ng-controller="myCtrl">
+<!-- $scope.userinfo has info about user -->
+<!-- $scope.plist has info about user's polls-->
+<head>
+    <title>Active Polls</title>
+    <style>
+        #nvbar {
+            background-color: #00cc00;
+        }
+
+        #nvbar a {
+            color: white;
+        }
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Caption" rel="stylesheet">
+    <link href="../stylesheets/mypolls.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <section class="container">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid" id="nvbar">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#" id="webname">Voix</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="dashboard.html">Home</a></li>
+                    <li><a href="polls.html">Polls</a></li>
+                    <li class="active"><a href="mypolls.html">My polls</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a>Hello {{userinfo.fname}} {{userinfo.lname}}</a></li>
+                    <li><a href="#" ng-click="logoff()">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="row">
+            <div class="col-sm-5" id="poll-list">
+                <div class = "stay">
+                <h1>Create A Poll</h1>
+                <div class="">
+                    <div class="form-group">
+                        <label for="question">Question :</label>
+                        <textarea class="form-control" rows="3" id="question" placeholder="What is your fav food?" ng-model = "nques.question"></textarea>
+                    </div>
+                    <div>
+                        <label for="opt1">Option 1:</label>
+                        <input type="text" class="form-control" placeholder="Biriyani" name="opt1" required ng-model ="nques.op1">
+                    </div>
+                    <div>
+                        <label for="opt2">Option 2:</label>
+                        <input type="text" class="form-control" placeholder="Biriyani" name="opt2" required ng-model ="nques.op2">
+                    </div>
+                    <div>
+                        <label for="opt3">Option 3:</label>
+                        <input type="text" class="form-control" placeholder="Biriyani" name="opt3" required ng-model ="nques.op3">
+                    </div>
+                    <div>
+                        <label for="opt4">Option 4:</label>
+                        <input type="text" class="form-control" placeholder="Biriyani" name="opt4" required ng-model ="nques.op4">
+                    </div>
+                    <br><br>
+                    <button type="submit" class="btn btn-primary btn-block" ng-click="submitques()">Submit The Question</button>
+                </div>
+            </div>
+            </div>
+            <div class="col-sm-7">
+            <div class = "displaypolls">
+                 <div class = "diffpolls" ng-repeat="item in plist">
+                     <h1>{{item.question}}</h1>
+                     <p> - &nbsp;&nbsp;&nbsp;&nbsp;<i>{{item.creator}}</i></p>
+                     <table class="table">
+                         <tr><th>{{item.op1}}</th><td>{{item.c1}}</td><td></td></tr>
+                         <tr><th>{{item.op2}}</th><td>{{item.c2}}</td><td></td></tr>
+                         <tr><th>{{item.op3}}</th><td>{{item.c3}}</td><td></td></tr>
+                         <tr><th>{{item.op4}}</th><td>{{item.c4}}</td><td></td></tr>
+                     </table>
+                     </div>
+             </div>
+            </div>
+        </div>
+    </section>
+    <script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../javascript/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="../javascript/angular.min.js" type="text/javascript"></script>
+    <script src="../javascript/mypollcontroller.js" type="text/javascript"></script>
+</body>
+
+</html>
