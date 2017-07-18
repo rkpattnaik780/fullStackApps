@@ -13,7 +13,7 @@ ang.controller('myCtrl', function ($scope, $http, $location) {
                 console.log(res.data);
                 
                 if(res.data)  { location.href = 'htmlpages/dashboard.html' ; }
-                else alert("password didn't match");
+                else alert("The userid and password isn't registered")
             }, function (res) { console.log(error); });
         }
     }

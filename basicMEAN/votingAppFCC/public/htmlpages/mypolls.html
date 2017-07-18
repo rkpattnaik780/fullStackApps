@@ -28,7 +28,7 @@
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid" id="nvbar">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#" id="webname">Voix</a>
+                    <a class="navbar-brand" id="webname">Voix</a>
                 </div>
                 <ul class="nav navbar-nav">
                     <li><a href="dashboard.html">Home</a></li>
@@ -76,6 +76,9 @@
             <div class = "displaypolls">
                  <div class = "diffpolls" ng-repeat="item in plist">
                      <h1>{{item.question}}</h1>
+                     <div class = "dismiss">
+                     <button type="button" class = "btn btn-danger" ng-click="deletePoll(item)">X</button>
+                     </div>
                      <p> - &nbsp;&nbsp;&nbsp;&nbsp;<i>{{item.creator}}</i></p>
                      <table class="table">
                          <tr><th>{{item.op1}}</th><td>{{item.c1}}</td><td></td></tr>

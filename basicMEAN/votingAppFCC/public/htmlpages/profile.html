@@ -26,7 +26,7 @@
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid" id="nvbar">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#" id="webname">Voix</a>
+                    <a class="navbar-brand" id="webname">Voix</a>
                 </div>
                 <ul class="nav navbar-nav">
                     <li><a href = "dashboard.html">Home</a></li>
@@ -44,9 +44,13 @@
         <table id = "bio" class = "table">
         <tr><td colspan=2 class="text-center"><img src = "../images/minions.jpg" alt="An asexual species"></td></tr>
         <tr><td class="text-center "><b>{{userinfo.fname}} {{userinfo.lname}}</b></td></tr>
-        <tr ng-repeat="(key, value) in userinfo">
-            <td> {{key}} </td>
-            <td> {{ value }} </td>
+        <tr>
+            <td>UserId</td>
+            <td>{{userinfo.userid}}</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>{{userinfo.email}}</td>
         </tr>
         </table>
         </div>

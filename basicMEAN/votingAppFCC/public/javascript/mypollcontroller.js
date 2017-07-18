@@ -17,13 +17,6 @@ ang.controller('myCtrl', function ($scope, $http) {
 
     load() ;
 
-   /* function loadMyPolls(){
-         $http.post('/loadmypolls',$scope.userinfo).then(function (res) {
-             console.log(res.data);
-         $scope.plist = res.data ;
-      }, function (res) {console.log(error);});
-    } */
-
     function loadMyPolls(){
          $http.post('/loadmypolls',$scope.userinfo).then(function (res) {
              console.log(res.data);
@@ -38,6 +31,13 @@ ang.controller('myCtrl', function ($scope, $http) {
            location.href = "exit.html"
       }, function (res) {console.log(error);});
      };
+
+     $scope.deletePoll = function(item){
+          $http.post('/deletepoll',item).then( function (res){
+              console.log("Deleted");
+              loadMyPolls();
+          }, function (res) { console.log("error");});
+     };
      
     $scope.submitques = function(){
          $http.post('/submitpoll' , $scope.nques).then(function(res){
@@ -47,13 +47,3 @@ ang.controller('myCtrl', function ($scope, $http) {
          }, function (res) { console.log(error);});
     };
 });
-
-/* Let the polls be in another collection named polling in 'votingapp' database
-
-any record in the polling sec should have 
- - a question
- - 4 options
- - 4 buttons that will increase their value per vote
- - 4 counts
- - user who posted it
- */

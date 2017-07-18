@@ -24,9 +24,15 @@ body{padding-top : 50px ;}
     border: 0px solid black ;
     border-radius: 4px ;
     margin : auto ;
+    position: relative ;
     padding : 10px ;
 }
 
 .diffpolls h1 { font-size : 25px !important ;}
 .diffpolls ul {list-style-type: none ;}
 .diffpolls p { text-align: right ;}
+
+.dismiss{ position: absolute ;
+          padding : 5px ;
+          top : 0px ;
+          right : 0px;}
