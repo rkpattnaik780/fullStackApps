@@ -45,18 +45,10 @@ app.post('/login', function (req, res) {
 });
 
 app.get('/dashboard', function (req, res) {
-    console.log("dashboard is loading!");
-    console.log(req.session.user.fname);
-    if (!req.session.user) {
-        console.log("Not found");
-    }
     res.json(req.session.user);
 });
 
 app.get('/profile', function (req, res) {
-    if (!req.session.user) {
-        console.log("Not found");
-    }
     res.json(req.session.user);
 });
 

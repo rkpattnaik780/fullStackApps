@@ -7,8 +7,7 @@ ang.controller('myCtrl', function ($scope, $http) {
             console.log("fetch data");
             console.log(res.data);
             if (!res.data) {
-                alert("nothing found");
-                $scope.display = "hidden";
+                location.href = "../index.html"
             }
             $scope.userdetails = res.data;
 
