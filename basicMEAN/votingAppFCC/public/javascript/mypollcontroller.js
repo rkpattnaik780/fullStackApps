@@ -38,11 +38,18 @@ ang.controller('myCtrl', function ($scope, $http) {
           }, function (res) { console.log("error");});
      };
      
-    $scope.submitques = function(){
+    $scope.submitques = function(nques){
+         var t = true ;
+         if (!(nques.question && nques.op1 && nques.op2 && nques.op3 && nques.op4)){
+             t = false ;
+             alert("All fields are compulsary!") ;
+             $scope.nques = {} ;
+         }
+         if(t){
          $http.post('/submitpoll' , $scope.nques).then(function(res){
              console.log('Submitted');
              $scope.nques = {} ;
              loadMyPolls();
-         }, function (res) { console.log(error);});
+         }, function (res) { console.log(error);}); }
     };
 });

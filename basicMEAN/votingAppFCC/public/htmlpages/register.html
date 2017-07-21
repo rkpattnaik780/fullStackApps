@@ -54,7 +54,7 @@
                     <input type="password" class="form-control" id="pwd"
                     ng-model="user.password2" placeholder="Enter password again" name="pwd" required>
                 </div>
-                <input type ="checkbox" ng-model="terms" ng-value="true"> I agree to all <a href = "../others/tnc.txt" target="_blank">terms and conditions</a> of the website.<br>
+                <input type ="checkbox" ng-model="user.terms" ng-value = "true"> I agree to all <a href = "../others/tnc.txt" target="_blank">terms and conditions</a> of the website.<br>
                 <br><button type="submit" class="btn btn-primary btn-block" 
                 ng-click="register(user)">Register</button>
             </div>

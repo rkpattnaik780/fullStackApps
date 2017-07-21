@@ -4,6 +4,8 @@ var session = require('express-session');
 
 var bodyParser = require('body-parser');
 
+var nodemailer = require('nodemailer');
+
 var mongo = require('mongodb').MongoClient;
 
 var url = 'mongodb://localhost:27017/votingapp';
@@ -44,6 +46,34 @@ app.post('/login', function (req, res) {
     });
 });
 
+app.post('/sendpwd', function (req, res) {
+    mongo.connect(url, function (err, db) {
+        if (err) throw err;
+        db.collection("users").findOne({ email: req.body.email }, function (err, doc) {  // even only rm works
+            if (err) throw err;
+            console.log(doc);
+            if (doc) {
+                var mailOptions = {
+                    from: '"Admin" <ramakpatt@gmail.com>', // sender address
+                    to: doc.email, // list of receivers
+                    subject: 'Your password for votingApp', // Subject line
+                    html: "<h1>Hello " + doc.fname + "</h1><p>Your password for votingApp is " + doc.password + "</p>" // plain text body
+                };
+                transporter.sendMail(mailOptions, function (error, info) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        console.log('Email sent: ' + info.response);
+                    }
+                });
+                res.json(doc);
+            }
+            else res.json();
+            db.close();
+        });
+    });
+});
+
 app.get('/dashboard', function (req, res) {
     res.json(req.session.user);
 });
@@ -64,6 +94,29 @@ app.post('/votefor1', function (req, res) {
                 res.json(doc);
                 db.close();
             });
+    });
+});
+
+app.post('/checkuserid', function (req, res) {
+    console.log(req.body);
+    mongo.connect(url, function (err, db) {
+        if (err) throw err;
+        db.collection("users").findOne({ userid: req.body.userid }, function (err, doc) {
+            if (err) throw err;
+            res.json(doc);
+            db.close();
+        });
+    });
+});
+
+app.post('/checkemail', function (req, res) {
+    mongo.connect(url, function (err, db) {
+        if (err) throw err;
+        db.collection("users").findOne({ email: req.body.email }, function (err, doc) {
+            if (err) throw err;
+            res.json(doc);
+            db.close();
+        });
     });
 });
 
@@ -178,6 +231,16 @@ app.post('/loadmypolls', function (req, res) {
 app.get('/logout', function (req, res) {
     req.session.destroy();
     res.end();
+});
+
+var transporter = nodemailer.createTransport({
+    service : 'gmail',
+    port: 465,
+    secure: true, // secure:true for port 465, secure:false for port 587
+    auth: {
+        user: 'ramakpatt@gmail.com',
+        pass: process.argv[2] 
+    }
 });
 
 app.listen(3000);

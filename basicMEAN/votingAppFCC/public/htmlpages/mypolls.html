@@ -24,7 +24,7 @@
 </head>
 
 <body>
-    <section class="container" style="visibility : {{display}}">
+    <section class="container">
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid" id="nvbar">
                 <div class="navbar-header">
@@ -68,7 +68,7 @@
                         <input type="text" class="form-control" placeholder="Biriyani" name="opt4" required ng-model ="nques.op4">
                     </div>
                     <br><br>
-                    <button type="submit" class="btn btn-primary btn-block" ng-click="submitques()">Submit The Question</button>
+                    <button type="submit" class="btn btn-primary btn-block" ng-click="submitques(nques)">Submit The Question</button>
                 </div>
             </div>
             </div>

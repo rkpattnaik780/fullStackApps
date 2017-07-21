@@ -8,6 +8,7 @@ body { overflow: hidden ;}
     color : white ;
     font-family: 'Roboto', sans-serif;
 }
+.small-text{ font-size: 75%; color : #66d9ff }
 #signupbar{ height : 100vh ;
             font-family: 'Oxygen', sans-serif; 
             padding : 20px;} 
