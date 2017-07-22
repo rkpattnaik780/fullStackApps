@@ -41,6 +41,7 @@ app.post('/login', function (req, res) {
                 }
                 else res.json();
             }
+             else res.json();
             db.close();
         });
     });
@@ -57,7 +58,7 @@ app.post('/sendpwd', function (req, res) {
                     from: '"Admin" <ramakpatt@gmail.com>', // sender address
                     to: doc.email, // list of receivers
                     subject: 'Your password for votingApp', // Subject line
-                    html: "<h1>Hello " + doc.fname + "</h1><p>Your password for votingApp is " + doc.password + "</p>" // plain text body
+                    html: "<h1>Hello " + doc.fname + '</h1><p>Your password for votingApp is - "' + doc.password + '"</p>' // plain text body
                 };
                 transporter.sendMail(mailOptions, function (error, info) {
                     if (error) {
@@ -80,21 +81,6 @@ app.get('/dashboard', function (req, res) {
 
 app.get('/profile', function (req, res) {
     res.json(req.session.user);
-});
-
-app.post('/votefor1', function (req, res) {
-    console.log(req.body);
-    mongo.connect(url, function (err, db) {
-        if (err) throw err;
-        db.collection("polling").updateOne({ question: req.body.question },
-            { $inc: { c1: 1 } }, function (err, doc) {
-                if (err) throw err;
-                console.log("1 record updated");
-                console.log(doc);
-                res.json(doc);
-                db.close();
-            });
-    });
 });
 
 app.post('/checkuserid', function (req, res) {
@@ -120,12 +106,27 @@ app.post('/checkemail', function (req, res) {
     });
 });
 
+app.post('/votefor1', function (req, res) {
+    console.log(req.body);
+    mongo.connect(url, function (err, db) {
+        if (err) throw err;
+        db.collection("polling").updateOne({ question: req.body.question },
+            { $inc: { c1: 1 } , $push: { voters : req.session.user.userid}}, function (err, doc) {
+                if (err) throw err;
+                console.log("1 record updated");
+                console.log(doc);
+                res.json(doc);
+                db.close();
+            });
+    });
+});
+
 app.post('/votefor2', function (req, res) {
     console.log(req.body);
     mongo.connect(url, function (err, db) {
         if (err) throw err;
         db.collection("polling").updateOne({ question: req.body.question },
-            { $inc: { c2: 1 } }, function (err, doc) {
+            { $inc: { c2: 1 }  , $push: { voters : req.session.user.userid }}, function (err, doc) {
                 if (err) throw err;
                 console.log("1 record updated");
                 console.log(doc);
@@ -140,7 +141,7 @@ app.post('/votefor3', function (req, res) {
     mongo.connect(url, function (err, db) {
         if (err) throw err;
         db.collection("polling").updateOne({ question: req.body.question },
-            { $inc: { c3: 1 } }, function (err, doc) {
+            { $inc: { c3: 1 } , $push: { voters : req.session.user.userid} }, function (err, doc) {
                 if (err) throw err;
                 console.log("1 record updated");
                 console.log(doc);
@@ -155,7 +156,7 @@ app.post('/votefor4', function (req, res) {
     mongo.connect(url, function (err, db) {
         if (err) throw err;
         db.collection("polling").updateOne({ question: req.body.question },
-            { $inc: { c4: 1 } }, function (err, doc) {
+            { $inc: { c4: 1 } , $push: { voters : req.session.user.userid } }, function (err, doc) {
                 if (err) throw err;
                 console.log("1 record updated");
                 console.log(doc);
@@ -205,7 +206,8 @@ app.post('/submitpoll', function (req, res) {
             "op1": req.body.op1,
             "op2": req.body.op2,
             "op3": req.body.op3,
-            "op4": req.body.op4
+            "op4": req.body.op4,
+            "voters": []
         };
         db.collection('polling').insertOne(record, function (err, record) {
             if (err) throw err;
@@ -228,18 +230,29 @@ app.post('/loadmypolls', function (req, res) {
     });
 });
 
+app.post('/checkvoted', function (req, res) {
+    mongo.connect(url, function (err, db) {
+        if (err) throw err;
+        db.collection("polling").findOne({ "question": req.body.question }, function (err, doc) {
+            if (err) throw err;
+            res.json(doc);
+            db.close();
+        });
+    });
+});
+
 app.get('/logout', function (req, res) {
     req.session.destroy();
     res.end();
 });
 
 var transporter = nodemailer.createTransport({
-    service : 'gmail',
+    service: 'gmail',
     port: 465,
     secure: true, // secure:true for port 465, secure:false for port 587
     auth: {
         user: 'ramakpatt@gmail.com',
-        pass: process.argv[2] 
+        pass: process.argv[2]
     }
 });
 

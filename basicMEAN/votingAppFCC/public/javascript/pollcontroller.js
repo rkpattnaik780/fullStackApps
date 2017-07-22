@@ -1,61 +1,97 @@
 var ang = angular.module('myApp', []);
 
 ang.controller('myCtrl', function ($scope, $http) {
-    
-      function load(){
-       $scope.display = "visible" ; 
-      $http.get('/profile').then(function (res) {
+
+  $scope.onPoll = {};
+
+  function load() {
+    $scope.display = "visible";
+    $http.get('/profile').then(function (res) {
       console.log("fetch user data");
-      if(!res.data){ 
-         
-          $scope.display = "none" ; } 
-          console.log(res.data);
-          $scope.userinfo = res.data;
-      }, function (res) {console.log(error);});
-    }
+      if (!res.data) {
 
-    load() ;
+        $scope.display = "none";
+      }
+      console.log(res.data);
+      $scope.userinfo = res.data;
+    }, function (res) { console.log(error); });
+  }
 
-    function loadPolls(){
-         $http.get('/loadpolls').then(function (res) {
-             console.log(res.data);
-         $scope.plist = res.data ;
-      }, function (res) {console.log(error);});
-    }
+  load();
 
-    loadPolls() ;
+  function loadPolls() {
+    $http.get('/loadpolls').then(function (res) {
+      console.log(res.data);
+      $scope.plist = res.data;
+    }, function (res) { console.log(error); });
+  }
 
-     $scope.logoff = function(){
-          $http.get('/logout').then(function (res) {
-           alert("Logging you out");
-           location.href = "exit.html"
-      }, function (res) {console.log(error);});
-     };
-     
-     $scope.add1 = function(item){
+  loadPolls();
+
+  $scope.logoff = function () {
+    $http.get('/logout').then(function (res) {
+      alert("Logging you out");
+      location.href = "exit.html"
+    }, function (res) { console.log(error); });
+  };
+
+  $scope.add1 = function (item) {
+    $http.post('/checkvoted', item).then(function (res) {
+      console.log(res.data);
+      $scope.onPoll = res.data;
+      console.log($scope.onPoll.voters.indexOf($scope.userinfo.userid));
+      if ($scope.onPoll.voters.indexOf($scope.userinfo.userid) === -1) {
         $http.post('/votefor1', item).then(function (res) {
-              console.log(res);
-              loadPolls();
-              }, function (res) { console.log(error); }); 
-     };
-      $scope.add2 = function(item){
+          console.log(item);
+          loadPolls();
+        }, function (res) { console.log(error); });
+      }
+      else alert("You have already voted");
+    }, function (res) { console.log(error); });
+    /*   */
+  };
+  $scope.add2 = function (item) {
+    $http.post('/checkvoted', item).then(function (res) {
+      console.log(res.data);
+      $scope.onPoll = res.data;
+      console.log($scope.onPoll.voters.indexOf($scope.userinfo.userid));
+      if ($scope.onPoll.voters.indexOf($scope.userinfo.userid) === -1) {
         $http.post('/votefor2', item).then(function (res) {
-              console.log(res);
-              loadPolls();
-              }, function (res) { console.log(error); }); 
-     };
-      $scope.add3 = function(item){
+          console.log(item);
+          loadPolls();
+        }, function (res) { console.log(error); });
+      }
+      else alert("You have already voted");
+    }, function (res) { console.log(error); });
+  };
+  $scope.add3 = function (item) {
+    $http.post('/checkvoted', item).then(function (res) {
+      console.log(res.data);
+      $scope.onPoll = res.data;
+      console.log($scope.onPoll.voters.indexOf($scope.userinfo.userid));
+      if ($scope.onPoll.voters.indexOf($scope.userinfo.userid) === -1) {
         $http.post('/votefor3', item).then(function (res) {
-              console.log(res);
-              loadPolls();
-              }, function (res) { console.log(error); }); 
-     };
-      $scope.add4 = function(item){
+          console.log(item);
+          loadPolls();
+        }, function (res) { console.log(error); });
+      }
+      else alert("You have already voted");
+    }, function (res) { console.log(error); });
+  };
+  $scope.add4 = function (item) {
+    $http.post('/checkvoted', item).then(function (res) {
+      console.log(res.data);
+      $scope.onPoll = res.data;
+      console.log($scope.onPoll.voters.indexOf($scope.userinfo.userid));
+      if ($scope.onPoll.voters.indexOf($scope.userinfo.userid) === -1) {
         $http.post('/votefor4', item).then(function (res) {
-              console.log(res);
-              loadPolls();
-              }, function (res) { console.log(error); }); 
-     };
+          console.log(item);
+          loadPolls();
+        }, function (res) { console.log(error); });
+      }
+      else alert("You have already voted");
+    }, function (res) { console.log(error); });
+  };
 
 });
 
@@ -68,3 +104,6 @@ any record in the polling sec should have
  - 4 counts
  - user who posted it
  */
+/*
+
+*/
