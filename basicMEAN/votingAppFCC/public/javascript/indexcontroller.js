@@ -10,8 +10,6 @@ ang.controller('myCtrl', function ($scope, $http, $location) {
         }
         if (t) {
             $http.post('/login', $scope.user).then(function (res) {
-                console.log(res.data);
-                
                 if(res.data)  { location.href = 'htmlpages/dashboard.html' ; }
                 else 
                 {

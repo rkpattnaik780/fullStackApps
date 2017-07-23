@@ -58,7 +58,7 @@ app.post('/sendpwd', function (req, res) {
                     from: '"Admin" <ramakpatt@gmail.com>', // sender address
                     to: doc.email, // list of receivers
                     subject: 'Your password for votingApp', // Subject line
-                    html: "<h1>Hello " + doc.fname + '</h1><p>Your password for votingApp is - "' + doc.password + '"</p>' // plain text body
+                    html: "<h1>Hello " + doc.fname + '</h1><p>Your password for votingApp is - "<b>' + doc.password + '</b>"</p>' // plain text body
                 };
                 transporter.sendMail(mailOptions, function (error, info) {
                     if (error) {
