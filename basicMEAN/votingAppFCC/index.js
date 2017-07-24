@@ -185,7 +185,8 @@ app.get('/loadpolls', function (req, res) {
     console.log("Loading all the polls");
     mongo.connect(url, function (err, db) {
         if (err) throw err;
-        db.collection('polling').find().toArray(function (err, docs) {
+        var mysort = { question : 1 };
+        db.collection('polling').find().sort(mysort).toArray(function (err, docs) {
             if (err) throw err;
             res.json(docs);
             db.close();
