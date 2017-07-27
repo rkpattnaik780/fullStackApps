@@ -5,7 +5,6 @@ ang.controller('myCtrl', function ($scope, $http) {
 
         $http.get('/dashboard').then(function (res) {
             console.log("fetch data");
-            console.log(res.data);
             if (!res.data) {
                 location.href = "../index.html"
             }

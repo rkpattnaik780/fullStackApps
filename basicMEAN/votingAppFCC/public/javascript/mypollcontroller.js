@@ -8,7 +8,6 @@ ang.controller('myCtrl', function ($scope, $http) {
       console.log("fetch user data");
       if(!res.data){ 
           location.href = "../index.html" ;}
-          console.log(res.data);
           $scope.userinfo = res.data;
           loadMyPolls();
       }, function (res) {console.log(error);});
@@ -18,7 +17,6 @@ ang.controller('myCtrl', function ($scope, $http) {
 
     function loadMyPolls(){
          $http.post('/loadmypolls',$scope.userinfo).then(function (res) {
-             console.log(res.data);
              $scope.plist = res.data ;
       }, function (res) {console.log(error);});
     }
@@ -33,7 +31,6 @@ ang.controller('myCtrl', function ($scope, $http) {
 
      $scope.deletePoll = function(item){
           $http.post('/deletepoll',item).then( function (res){
-              console.log("Deleted");
               loadMyPolls();
           }, function (res) { console.log("error");});
      };

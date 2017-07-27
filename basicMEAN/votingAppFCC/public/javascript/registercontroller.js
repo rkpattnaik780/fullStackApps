@@ -53,7 +53,6 @@ ang.controller('myCtrl', function ($scope, $http) {
                 if (!resp.data) {
                     $http.post('/checkuserid', $scope.user).then(function (res) {
                         // if userid is available , data is returned .
-                        console.log(res.data);
                         if (!res.data) {
                             $http.post('/signup', $scope.user).then(function (response) {
                                 console.log(response.data);

@@ -4,7 +4,9 @@
   "description": "The first basejump project of freeCodeCamp backend",
   "main": "index.js",
   "scripts": {
-    "test": "run app.js"
+    "test": "run app.js",
+    "start": "node index.js",
+    "start-dev": "nodemon index.js"
   },
   "author": "Ramakrishna Pattnaik",
   "license": "ISC",
@@ -14,5 +16,8 @@
     "express-session": "^1.15.3",
     "mongodb": "^2.2.30",
     "nodemailer": "^4.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }
