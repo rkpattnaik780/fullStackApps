@@ -81,5 +81,5 @@ var transporter = nodemailer.createTransport({
         pass: "abcdefghij" 
     }
 });
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
 console.log('app running on port no 3000');

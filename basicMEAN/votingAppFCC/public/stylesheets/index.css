@@ -27,3 +27,6 @@ body { overflow: hidden ;}
 #orgname p { text-align: center ;
              padding-left: 140px ;
              font-size : 18px ;}
+#myprofile{ bottom : 5%;
+            position : absolute;}
+#slogan{ padding-left : 50%;}
