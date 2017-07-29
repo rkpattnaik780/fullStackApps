@@ -18,6 +18,7 @@
     <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="../icons/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=PT+Sans+Caption" rel="stylesheet">
@@ -30,21 +31,28 @@
             <div class="container-fluid" id="nvbar">
                 <div class="navbar-header">
                     <a class="navbar-brand" id="webname">Voix</a>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                 </div>
-                <ul class="nav navbar-nav">
-                    <li><a href="dashboard.html">Home</a></li>
-                    <li><a href="polls.html">Polls</a></li>
-                    <li class="active"><a href="mypolls.html">My polls</a></li>
-                    <li><a href="profile.html">Profile</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a>Hello {{userinfo.fname}} {{userinfo.lname}}</a></li>
-                    <li><a href="#" ng-click="logoff()">Logout</a></li>
-                </ul>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="dashboard.html">Home</a></li>
+                        <li><a href="polls.html">Polls</a></li>
+                        <li class="active"><a href="mypolls.html">My polls</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a>Hello {{userinfo.fname}} {{userinfo.lname}}</a></li>
+                        <li><a href="#" ng-click="logoff()">Logout</a></li>
+                    </ul>
+                </div>
             </div>
         </nav>
         <div class="row">
-            <div class="col-sm-5" id="poll-list">
+            <div class="col-md-5" id="poll-list">
                 <div class = "stay">
                 <h1>Create A Poll</h1>
                 <div class="">
@@ -73,7 +81,7 @@
                 </div>
             </div>
             </div>
-            <div class="col-sm-7">
+            <div class="col-md-7">
             <div class = "displaypolls">
                  <div class = "diffpolls" ng-repeat="item in plist">
                      <h1 style = "padding-left : 20px;">{{item.question}}</h1>
@@ -81,7 +89,7 @@
                      <button type="button" class = "btn btn-danger" ng-click="deletePoll(item)">X</button>
                      </div>
                      <p> - &nbsp;&nbsp;&nbsp;&nbsp;<i>{{item.creator}}</i></p>
-                     <table class="table">
+                     <table class="table" id = "mylist">
                          <tr><th>{{item.op1}}</th><td>{{item.c1}}</td><td></td></tr>
                          <tr><th>{{item.op2}}</th><td>{{item.c2}}</td><td></td></tr>
                          <tr><th>{{item.op3}}</th><td>{{item.c3}}</td><td></td></tr>
