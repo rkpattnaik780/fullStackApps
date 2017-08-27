@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mean Chat</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <link href="stylesheets/layout.css" type="text/css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+    <h1>Chat App using MEAN</h1>
+    <div class="chatbox">
+        <div id="messages">
+            <p ng-repeat="msg in msgs track by $index">{{msg.msgre}}</p>
+        </div>
+        <div class="row field">
+            <div class="col-sm-9">
+                <input type="text" class="form-control" ng-model="message.text">
+            </div>
+            <div class="col-sm-3">
+                <button class="btn btn-info" ng-click="sendMsg(message.text)">Send</button>
+            </div>
+        </div>
+    </div>
+    <script src="angular/angular.min.js"></script>
+    <script src="javascript/controller.js"></script>
+</body>
+
+</html>

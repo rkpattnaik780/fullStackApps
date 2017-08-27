@@ -1,0 +1,21 @@
+.chatbox{
+    height : 520px ;
+    width : 300px ;
+    border: 1px solid black;
+    margin: auto ;
+    position: relative ;
+    padding-left : 20px ;
+    padding-right: 10px ;
+}
+.field{
+    position: absolute ;
+    bottom : 5px ;
+    right : 15px ;
+}
+#messages{
+   margin : 1px ;
+   border : 1px solid black ;
+   height : 400px ;
+   width : 270px ;
+   overflow-y : scroll ;
+}
